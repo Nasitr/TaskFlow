@@ -1,0 +1,85 @@
+*1. Manager*
+#### *As a Manager, I want to:*
+- *Project Management:*
+  - Create, update, and delete projects so that I can organize and manage work effectively.
+  - Assign team members to projects so that the right people are working on the right tasks.
+  - Set project deadlines and priorities so that the team knows what to focus on.
+  - Archive completed projects so that they don’t clutter the active workspace.
+
+- *Task Management:*
+  - Create, assign, and delete tasks within a project so that work is broken down into manageable pieces.
+  - Set task deadlines, priorities, and statuses (e.g., To Do, In Progress, Done) so that progress is tracked.
+  - Reassign tasks to other team members if needed so that workloads are balanced.
+  - View all tasks across projects so that I can monitor overall progress.
+
+- *Notifications:*
+  - Receive notifications when I create a project and assign it to someone so that I can confirm the assignment.
+  - Receive notifications when a project is completed so that I can review the results.
+
+---
+
+### *2. Team Member*
+#### *As a Team Member, I want to:*
+- *Task Management:*
+  - View tasks assigned to me so that I know what I need to work on.
+  - Update the status of my tasks (e.g., To Do, In Progress, Done) so that others can see my progress.
+
+- *Project Management:*
+  - View the projects I’m assigned to so that I can see my responsibilities.
+  - Access project details (e.g., description, tasks, deadlines) so that I can stay informed.
+
+- *Notifications:*
+  - Receive notifications when a new project is assigned to me so that I can start working on it.
+  - Receive notifications when a project is completed so that I know it’s finished.
+
+---
+
+### *3. Admin*
+#### *As an Admin, I want to:*
+- *User Management:*
+  - Create, update, and deactivate user accounts so that I can manage access to the system.
+  - Assign roles (Manager, Team Member, Admin) to users so that permissions are properly set.
+  - Reset user passwords if they forget them so that they can regain access to their accounts.
+
+- *Project and Task Lists:*
+  - View a list of all projects so that I can monitor system activity.
+  - View a list of all tasks so that I can see what work is being done.
+
+---
+
+### *Shared User Stories (Applicable to All Roles)*
+#### *As a user (Manager, Team Member, or Admin), I want to:*
+- Log in to the system using my credentials so that I can access my account.
+- Update my profile information (e.g., name, email, profile picture) so that my details are current.
+- Log out of the system so that my account remains secure.
+- Search for tasks, projects, or files by keyword so that I can quickly find what I need.
+- Filter tasks by status, priority, or assignee so that I can focus on specific work.
+- Sort tasks by deadline or priority so that I can prioritize my work.
+
+---
+
+### *Role-Specific Permissions*
+- *Admin:*  
+  - Access to *user management, **project list, and **task list*.  
+  - No access to project/task creation, assignment, or notifications.  
+
+- *Manager:*  
+  - Access to *project management, **task management, and **notifications*.  
+  - Can create, assign, and manage projects and tasks.  
+  - Receives notifications for project creation, assignment, and completion.  
+
+- *Team Member:*  
+  - Access to *tasks assigned to them, **project details, and **notifications*.  
+  - Can update task status and view project information.  
+  - Receives notifications for project assignment and completion.  
+
+---
+
+### *Updated Notifications*
+- *Manager:*
+  - Receive notifications when they create a project and assign it to someone.  
+  - Receive notifications when a project is completed.  
+
+- *Team Member:*
+  - Receive notifications when a new project is assigned to them.  
+  - Receive notifications when a project is completed.
