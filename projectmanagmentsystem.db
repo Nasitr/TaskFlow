@@ -1,0 +1,75 @@
+-- Create Database
+CREATE DATABASE ProjectManagementSystem;
+USE ProjectManagementSystem;
+
+-- Create the new Employees table
+CREATE TABLE Employees (
+    employee_id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE, -- For login
+    password VARCHAR(255) NOT NULL,      -- For login
+    email VARCHAR(100) NOT NULL UNIQUE,  -- For login and contact
+    name VARCHAR(100) NOT NULL,          -- Employee name
+    department VARCHAR(100),             -- Employee department
+    position VARCHAR(100),               -- Employee position
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP -- Account creation time
+);
+-- Table 3: Projects
+CREATE TABLE Projects (
+    project_id INT AUTO_INCREMENT PRIMARY KEY,
+    project_name VARCHAR(100) NOT NULL,
+    description TEXT,
+    status ENUM('Pending', 'In Progress', 'Completed') DEFAULT 'Pending',
+    start_date DATE,
+    end_date DATE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Table 4: Tasks
+CREATE TABLE Tasks (
+    task_id INT AUTO_INCREMENT PRIMARY KEY,
+    task_name VARCHAR(100) NOT NULL,
+    description TEXT,
+    status ENUM('Pending', 'In Progress', 'Completed') DEFAULT 'Pending',
+    project_id INT,
+    assigned_to INT,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (project_id) REFERENCES Projects(project_id) ON DELETE CASCADE,
+    FOREIGN KEY (assigned_to) REFERENCES Employees(employee_id) ON DELETE SET NULL
+);
+
+INSERT INTO Employees (username, password, email, name, department, position) VALUES
+('john_doe', 'hashed_password_1', 'john.doe@example.com', 'John Doe', 'Engineering', 'Software Engineer'),
+('jane_smith', 'hashed_password_2', 'jane.smith@example.com', 'Jane Smith', 'Design', 'UI/UX Designer'),
+('alice_wong', 'hashed_password_3', 'alice.wong@example.com', 'Alice Wong', 'Marketing', 'Marketing Manager'),
+('bob_johnson', 'hashed_password_4', 'bob.johnson@example.com', 'Bob Johnson', 'Engineering', 'DevOps Engineer'),
+('emily_davis', 'hashed_password_5', 'emily.davis@example.com', 'Emily Davis', 'HR', 'HR Manager'),
+('michael_brown', 'hashed_password_6', 'michael.brown@example.com', 'Michael Brown', 'Sales', 'Sales Executive'),
+('sarah_miller', 'hashed_password_7', 'sarah.miller@example.com', 'Sarah Miller', 'Finance', 'Accountant'),
+('david_wilson', 'hashed_password_8', 'david.wilson@example.com', 'David Wilson', 'Engineering', 'Frontend Developer'),
+('linda_moore', 'hashed_password_9', 'linda.moore@example.com', 'Linda Moore', 'Design', 'Graphic Designer'),
+('james_taylor', 'hashed_password_10', 'james.taylor@example.com', 'James Taylor', 'IT', 'System Administrator');
+
+
+INSERT INTO Projects (project_name, description, status, start_date, end_date) VALUES
+('Website Redesign', 'Redesign the company website to improve user experience.', 'In Progress', '2023-10-01', '2023-12-31'),
+('Mobile App Development', 'Develop a new mobile app for iOS and Android platforms.', 'Pending', '2023-11-01', '2024-02-28'),
+('Marketing Campaign', 'Launch a new marketing campaign to increase brand awareness.', 'Completed', '2023-09-01', '2023-09-30'),
+('HR Portal Upgrade', 'Upgrade the internal HR portal with new features.', 'In Progress', '2023-10-15', '2024-01-15'),
+('Sales Dashboard', 'Build a dashboard to track sales performance.', 'Pending', '2023-12-01', '2024-03-31'),
+('Inventory Management System', 'Develop a system to manage company inventory.', 'In Progress', '2023-11-15', '2024-04-30'),
+('Employee Training Program', 'Create a training program for new employees.', 'Pending', '2024-01-01', '2024-06-30'),
+('Customer Support Portal', 'Build a portal for customer support and issue tracking.', 'In Progress', '2023-10-20', '2024-02-15'),
+('E-commerce Platform', 'Develop an e-commerce platform for online sales.', 'Pending', '2024-02-01', '2024-08-31'),
+('Data Analytics Tool', 'Create a tool for analyzing company data.', 'In Progress', '2023-11-01', '2024-05-31');
+
+INSERT INTO Tasks (task_name, description, status, project_id, assigned_to) VALUES
+('Design Homepage', 'Create a new homepage design for the website.', 'In Progress', 1, 2),
+('Develop Backend API', 'Set up the backend API for the mobile app.', 'Pending', 2, 1),
+('Create Social Media Ads', 'Design and schedule social media ads for the campaign.', 'Completed', 3, 3),
+('Implement User Authentication', 'Add user authentication to the HR portal.', 'In Progress', 4, 4),
+('Test Mobile App', 'Conduct testing for the mobile app on both iOS and Android.', 'Pending', 2, 5),
+('Design Sales Dashboard UI', 'Create the user interface for the sales dashboard.', 'In Progress', 5, 2),
+('Develop Inventory Tracking Module', 'Build a module to track inventory levels.', 'Pending', 6, 1),
+('Create Training Materials', 'Prepare training materials for new employees.', 'Pending', 7, 9),
+('Build Support Ticket System', 'Develop a system for managing customer support tickets.', 'In Progress', 8, 8),
+('Analyze Sales Data', 'Analyze sales data to identify trends and insights.', 'Pending', 10, 7);
