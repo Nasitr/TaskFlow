@@ -1,0 +1,13 @@
+# MySQL files
+db/mysql.sock
+db/auto.cnf
+db/binlog.index
+db/ib_buffer_pool
+db/*.pid
+db/*.log
+db/data/
+
+# Other common ignores
+node_modules/
+.env
+*.log 
