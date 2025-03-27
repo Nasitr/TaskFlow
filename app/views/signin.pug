@@ -1,15 +1,15 @@
-//- extends layout
+extends layout
 
 block content
   h1 Sign In
-  form(action="/signin", method="POST")
-    label(for="username") Username:
-    input(type="text", id="username", name="username", required)
+  form(action="/signup", method="POST")
+    label(for="email") Email:
+    input(type="email", id="email", name="email", required)
     br
     label(for="password") Password:
     input(type="password", id="password", name="password", required)
     br
-    button(type="submit") Sign In
+    button(type="submit") Sign Up
   if error
     p.error= error
   p Don't have an account? 
