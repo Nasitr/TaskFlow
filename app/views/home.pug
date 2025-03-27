@@ -1,0 +1,43 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title #{title}
+    style.
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background: #f0f0f0;
+      }
+      .container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: white;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      }
+      .nav {
+        margin-bottom: 20px;
+      }
+      .nav a {
+        color: #333;
+        text-decoration: none;
+        margin-right: 15px;
+      }
+      .welcome {
+        color: #333;
+      }
+
+  body
+    .container
+      .nav
+        a(href="/") Home
+        a(href="/signin") Logout
+      
+      .welcome
+        h1 Welcome to the Home Page
+        p Successfully logged in!
+        p Click logout to return to sign in page
