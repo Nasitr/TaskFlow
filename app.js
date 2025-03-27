@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const authRoutes = require("./app/routes/authRoutes");
+const homeRoutes = require("./app/routes/homeRoutes");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -14,7 +15,8 @@ app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "app/views"));
 
 // Routes
-app.use("/", authRoutes);
+app.use("/", homeRoutes);     // Home routes
+app.use("/", authRoutes);     // Auth routes
 
 // Start the server
 app.listen(PORT, () => {
