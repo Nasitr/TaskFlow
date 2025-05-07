@@ -1,0 +1,12 @@
+extends ../layout
+
+block content
+  h1 Create Project
+  form(action="/projects/create" method="POST")
+    .form-group
+      label(for="name") Name
+      input(type="text" name="name" id="name" required)
+    .form-group
+      label(for="description") Description
+      textarea(name="description" id="description")
+    button(type="submit") Create

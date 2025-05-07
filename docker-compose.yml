@@ -1,28 +1,50 @@
-version: '3.3'
+version: '3.8'
+
 services:
-  web:
-    build:
-      context: ./
-    volumes:
-      - .:/src
-    command: supervisor -e  'js,pug,html' app.js
+  app:
+    build: .
     ports:
       - "3000:3000"
+    environment:
+      - DB_HOST=db
+      - DB_USER=root
+      - DB_PASSWORD=rootpassword
+      - DB_NAME=project_management
+      - NODE_ENV=development
+      - SESSION_SECRET=your-secret-key-change-this-in-production
     depends_on:
-      - db
-  db:
-    image: mysql
-    restart: always
-    env_file:
-      - ./.env
-    ports:
-      - "3308:3306"
+      db:
+        condition: service_healthy
     volumes:
-      - ./db:/var/lib/mysql
+      - .:/app
+      - /app/node_modules
+
+  db:
+    image: mysql:8.0
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=rootpassword
+      - MYSQL_DATABASE=project_management
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./src/database/schema.sql:/docker-entrypoint-initdb.d/schema.sql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "root", "-prootpassword"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
   phpmyadmin:
-    image: phpmyadmin/phpmyadmin:latest
+    image: phpmyadmin/phpmyadmin
     restart: always
-    env_file:
-      - ./.env
     ports:
       - "8081:80"
+    environment:
+      - PMA_HOST=db
+      - PMA_PORT=3306
+    depends_on:
+      - db
+
+volumes:
+  mysql_data: 

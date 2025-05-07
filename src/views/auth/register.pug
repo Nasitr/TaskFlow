@@ -1,0 +1,21 @@
+extends ../layout
+
+block content
+  .login-container
+    h1 Register
+    if error
+      .alert.alert-error= error
+    form(action="/register" method="POST")
+      .form-group
+        label(for="name") Full Name
+        input(type="text" id="name" name="name" required)
+      .form-group
+        label(for="email") Email
+        input(type="email" id="email" name="email" required)
+      .form-group
+        label(for="password") Password
+        input(type="password" id="password" name="password" required)
+      button(type="submit") Register
+    p
+      | Already have an account? 
+      a(href="/login") Login here 

@@ -1,0 +1,12 @@
+extends ../layout
+
+block content
+  h1 Edit Project
+  form(action=`/projects/${project.id}/edit` method="POST")
+    .form-group
+      label(for="name") Name
+      input(type="text" name="name" id="name" required value=project.name)
+    .form-group
+      label(for="description") Description
+      textarea(name="description" id="description")= project.description
+    button(type="submit") Save Changes

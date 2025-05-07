@@ -1,0 +1,11 @@
+# Node modules
+node_modules/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+https://github.com/Nasitr/TaskFlow.git

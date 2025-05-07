@@ -1,0 +1,30 @@
+extends ../layout
+
+block content
+  h1 Edit Task
+  form(action=`/tasks/${task.id}/edit` method="POST")
+    .form-group
+      label(for="title") Title
+      input(type="text" name="title" id="title" required value=task.title)
+    .form-group
+      label(for="description") Description
+      textarea(name="description" id="description")= task.description
+    .form-group
+      label(for="assignee_id") Assign to (User ID)
+      input(type="number" name="assignee_id" id="assignee_id" value=task.assignee_id)
+    .form-group
+      label(for="deadline") Deadline
+      input(type="date" name="deadline" id="deadline" value=task.deadline)
+    .form-group
+      label(for="priority") Priority
+      select(name="priority" id="priority")
+        option(value="low" selected=task.priority==='low') Low
+        option(value="medium" selected=task.priority==='medium') Medium
+        option(value="high" selected=task.priority==='high') High
+    .form-group
+      label(for="status") Status
+      select(name="status" id="status")
+        option(value="todo" selected=task.status==='todo') To Do
+        option(value="in_progress" selected=task.status==='in_progress') In Progress
+        option(value="done" selected=task.status==='done') Done
+    button(type="submit") Save Changes

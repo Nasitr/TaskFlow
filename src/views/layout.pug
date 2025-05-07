@@ -1,0 +1,25 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Project Management System
+    link(rel="stylesheet" href="/css/style.css")
+  body
+    nav.navbar
+      .nav-brand Project Management
+      if user
+        .nav-links
+          a(href="/dashboard") Dashboard
+          a(href="/projects") Projects
+          a(href="/logout") Logout
+          a(href="/team") Team
+      else
+        .nav-links
+          a(href="/login") Login
+          a(href="/register") Register
+    
+    .container
+      block content
+    
+    script(src="/js/main.js") 

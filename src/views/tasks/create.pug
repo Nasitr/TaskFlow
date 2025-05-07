@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+  h1 New Task for #{project.name}
+  form(action=`/projects/${project.id}/tasks/create` method="POST")
+    .form-group
+      label(for="title") Title
+      input(type="text" name="title" id="title" required)
+    .form-group
+      label(for="description") Description
+      textarea(name="description" id="description")
+    .form-group
+      label(for="assignee_id") Assign to (User ID)
+      input(type="number" name="assignee_id" id="assignee_id")
+    button(type="submit") Create Task

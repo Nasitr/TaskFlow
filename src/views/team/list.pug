@@ -1,0 +1,28 @@
+extends ../layout
+
+block content
+  h1(style="color:#2d3748; font-size:2em; font-weight:700; margin-bottom:1em;") Team Members
+  if users.length
+    table(style="width:100%; border-collapse:collapse;")
+      thead
+        tr
+          th(style="text-align:left; padding:0.5em; border-bottom:2px solid #3182ce;") Name
+          th(style="text-align:left; padding:0.5em; border-bottom:2px solid #3182ce;") Email
+      tbody
+        each user in users
+          tr
+            td(style="padding:0.5em; border-bottom:1px solid #e2e8f0;") #{user.name}
+            td(style="padding:0.5em; border-bottom:1px solid #e2e8f0;") #{user.email}
+  else
+    p(style="color:#718096;") No team members found.
+
+  style.
+    table {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(49, 130, 206, 0.08);
+      margin-top: 1em;
+    }
+    th, td {
+      font-size: 1.1em;
+    }
